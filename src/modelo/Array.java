@@ -5,12 +5,13 @@ public class Array<T>{
     private Object[] lista = new Object[3];
     private int controle = 0;//controla cadastros 
 
-    public void inserir(T item) {
+    public boolean inserir(T item) {
         if (controle == lista.length) {
             lista=criarNovoArray();
         }
         lista[controle] = item;
         controle++;
+        return true;
     }
 
     public void exibir() {
@@ -20,7 +21,7 @@ public class Array<T>{
     }
 
     private Object[] criarNovoArray() {
-        Object[] novo = new Object[lista.length + 3];
+        Object[] novo = new Object[lista.length * 2];
 
         System.arraycopy(lista, 0, novo, 0, lista.length);
 
@@ -28,24 +29,26 @@ public class Array<T>{
     }
 
     /**
-     * Pesquisa usando o método linear para buscar 
+     * Pesquisa usando o mï¿½todo linear para buscar 
      * o cadastro de uma pessoa no array lista.
-     * @param id int
-     * @return Pessoa
+     * @param ra int
+     * @return Alunos
      */
-    public Pessoa pesquisarCadastro(int id){
-        Pessoa p;
+    public Alunos pesquisarCadastro(int ra){
+        Alunos a;
         for(int i=0;i<controle;i++){
-         p=(Pessoa)lista[i];//Conversão temporária (cast)
-         if(id==p.getId()){
-           return p;
+         a=(Alunos)lista[i];//Conversï¿½o temporï¿½ria (cast)
+         if(ra==a.getRa()){
+           return a;
          }
       }
       return null;
     }
-    
-    
-    
-    
+
+    public boolean atualizar (Alunos chave, Alunos novo){
+
+        return true;
+    }
+
     
 }

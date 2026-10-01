@@ -5,7 +5,8 @@ public class Alunos {
     private String nome;
     private int ra;
     private static int contador = 1;
-    public Alunos(String nome, int ra) {
+
+    public Alunos(String nome) {
         this.nome = nome;
         this.ra = contador++;
 
@@ -15,7 +16,7 @@ public class Alunos {
     public String getNome() {
         return nome;
     }
-
+    public void setNome(String nome){this.nome = nome;}
     public int getRa() {
         return ra;
     }

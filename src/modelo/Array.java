@@ -2,7 +2,7 @@ package modelo;
 
 public class Array<T>{
 
-    private Object[] lista = new Object[3];
+    private  Object[] lista = new Object[3];
     private int controle = 0;//controla cadastros 
 
     public boolean inserir(T item) {
@@ -28,16 +28,10 @@ public class Array<T>{
         return novo;
     }
 
-    /**
-     * Pesquisa usando o m�todo linear para buscar 
-     * o cadastro de uma pessoa no array lista.
-     * @param ra int
-     * @return Alunos
-     */
     public Alunos pesquisarCadastro(int ra){
         Alunos a;
         for(int i=0;i<controle;i++){
-         a=(Alunos)lista[i];//Convers�o tempor�ria (cast)
+         a=(Alunos)lista[i];
          if(ra==a.getRa()){
            return a;
          }
@@ -45,10 +39,46 @@ public class Array<T>{
       return null;
     }
 
-    public boolean atualizar (Alunos chave, Alunos novo){
-
-        return true;
+    public boolean atualizar (int ra, Alunos novo){
+        for(int i = 0; i < lista.length; i++){
+            Alunos a = (Alunos)lista[i];
+            if(ra == i){
+                a.setNome(novo.getNome());
+                return true;
+            }
+        }
+        return false;
     }
 
+    public boolean remover(int ra){
+        for(int i = 0; i < lista.length; i++) {
+            Alunos a = (Alunos)lista[i];
+            if(a.getRa() == ra) {
+                for(int j = 0; j < lista.length-1; j++) {
+                    lista[j] = lista[j+1];
+                }
+                lista[lista.length-1] = null;
+            }
+            controle--;
+            return true;
+        }
+        return false;
+    }
+
+    public Alunos obter (int posicao){
+        for(int i = 0; i<lista.length; i++){
+            if(i==posicao){
+                return (Alunos)lista[i];
+            }
+        }
+        return null;
+    }
+
+    public boolean comparar(Alunos a, Alunos b){
+        if(a.equals(b)){
+            return true;
+        }
+        return false;
+    }
     
 }
